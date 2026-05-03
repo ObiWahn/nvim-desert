@@ -1,9 +1,18 @@
+-- Three-layer color architecture:
+--   palette.lua   raw hex values keyed by terminal color name (bg, fg, black…br_white)
+--   theme.lua     semantic roles — this file; maps roles to palette entries via `c.*`
+--                 NEVER assign raw hex here; always go through c.*
+--   highlights.lua  maps Neovim highlight groups to roles; no color values of its own
+--
+-- Role colors follow vim's default colorscheme cterm assignments for a dark background,
+-- resolved to hex via the Alacritty palette (see README). Alacritty is configured with
+-- draw_bold_text_with_bright_colors=true, so bold text on normal colors renders bright.
+
 local palette = require("vim-desert.palette")
 local c = palette.colors
 
 local M = {}
 
--- Semantic color roles. Swap this file (or pass overrides to setup()) to change the theme.
 M.roles = {
     -- Editor chrome
     bg              = c.bg,
