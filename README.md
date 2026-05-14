@@ -65,46 +65,46 @@ tables to produce the actual rendered hex color.
 > **Important:** Vim's internal NR-16 numbering in `:help cterm-colors` is NOT the ANSI
 > index. The table above reflects the actual escape codes Vim sends to the terminal.
 
-### Vim default dark-background syntax assignments
+### Vim default dark-background syntax assignments (vim92 baseline)
 
 From `/usr/share/vim/vim92/syntax/syncolor.vim` (`&background == "dark"`):
 
-| Vim group | cterm color | ANSI# | Resolved hex (Alacritty) | palette.lua key |
-|-----------|------------|-------|--------------------------|-----------------|
-| Comment   | DarkBlue   | 4     | `#5087C8`                | `blue`          |
-| Constant  | Magenta    | 13    | `#B04AD9`                | `br_magenta`    |
-| String → Constant | Magenta | 13 | `#B04AD9`             | `br_magenta`    |
-| Number → Constant | Magenta | 13 | `#B04AD9`             | `br_magenta`    |
-| Boolean → Constant | Magenta | 13 | `#B04AD9`            | `br_magenta`    |
-| Identifier | Cyan + bold | 14  | `#4DEEC7` **bold**       | `br_cyan`       |
-| Function → Identifier | Cyan + bold | 14 | `#4DEEC7` **bold** | `br_cyan`   |
-| Statement | Yellow     | 11    | `#FF8538`                | `br_yellow`     |
-| Keyword → Statement | Yellow | 11 | `#FF8538`             | `br_yellow`     |
-| Operator → Statement | Yellow | 11 | `#FF8538`            | `br_yellow`     |
-| Exception → Statement | Yellow | 11 | `#FF8538`           | `br_yellow`     |
-| PreProc   | LightBlue  | 12    | `#525EFF`                | `br_blue`       |
-| Include → PreProc | LightBlue | 12 | `#525EFF`            | `br_blue`       |
-| Macro → PreProc | LightBlue | 12 | `#525EFF`              | `br_blue`       |
-| Type      | LightGreen | 10    | `#2CFF2C`                | `br_green`      |
-| StorageClass → Type | LightGreen | 10 | `#2CFF2C`          | `br_green`      |
-| Structure → Type | LightGreen | 10 | `#2CFF2C`             | `br_green`      |
-| Special   | LightRed   | 9     | `#E91537`                | `br_red`        |
-| Tag → Special | LightRed | 9    | `#E91537`                | `br_red`        |
-| Delimiter → Special | LightRed | 9 | `#E91537`             | `br_red`        |
-| SpecialChar → Special | LightRed | 9 | `#E91537`           | `br_red`        |
-| Error     | White on Red | 15/9 | `#ffffff` on `#E91537` | `br_white`/`br_red` |
-| Todo      | Black on Yellow | 0/11 | `#666666` on `#FF8538` | `black`/`br_yellow` |
-| LineNr    | DarkYellow | 3     | `#FCBF35`                | `yellow`        |
-| CursorLineNr | DarkYellow bold | 3 | `#FCBF35` **bold**  | `yellow`        |
+| Vim group | cterm color | ANSI# | Resolved hex (Alacritty) |
+|-----------|------------|-------|--------------------------|
+| Comment   | DarkBlue   | 4     | `#5087C8`                |
+| Constant  | Red        | 1     | `#E0546A`                |
+| Statement / Keyword | Yellow | 3 | `#FCBF35`             |
+| PreProc / Include | Magenta | 5  | `#9E00DE`               |
+| Type      | Green      | 2     | `#3CC85E`                |
+| Special   | Magenta    | 5     | `#9E00DE`                |
+| LineNr    | DarkYellow | 3     | `#FCBF35`                |
 
 ### draw_bold_text_with_bright_colors
 
-Alacritty is configured with `draw_bold_text_with_bright_colors = true`. This means: when
-Vim sends a **normal** color (0–7) with `cterm=bold`, Alacritty renders it as the
-corresponding **bright** color (8–15). In the table above, `Identifier` uses `Cyan` (14,
-already bright) with bold — so this setting does not change its color, but it does mean
-that any group with a dark color + bold would render bright. The Neovim colorscheme
-replicates this by using the bright hex values directly and setting `bold = true`.
+Alacritty is configured with `draw_bold_text_with_bright_colors = true`. However,
+vim92's `syncolor.vim` does not set `cterm=bold` on any of the core syntax groups
+(only `term=bold`, which applies to monochrome terminals). So this setting does not
+affect terminal syntax colors — it only matters for UI elements that explicitly use
+`cterm=bold`.
+
+### Customisations applied on top of the vim92 baseline
+
+The colorscheme deviates from vim92 defaults to improve readability and differentiate
+C++ symbol types:
+
+| Role | Hex | Rationale |
+|------|-----|-----------|
+| Free functions | `#4DEEC7` (br_cyan) | Stand out from regular identifiers |
+| Methods | `#008A8B` (cyan) | Distinct from free functions, matches member vars |
+| Member variables / fields | `#008A8B` (cyan) | Visual tie to methods |
+| Operators (`<<`, `&`, `=`) | `#FF8538` (br_yellow) | Distinct from keywords |
+| Keyword modifiers (`const`, `static`, `public`) | `#3CC85E` (green) | Same family as types |
+| Builtin types (`int`, `bool`) | `#3CC85E` (green) | Distinct from user-defined types |
+| User-defined types / classes | `#fffdb3` (fg) | No special color — foreground |
+| Variables / parameters | `#fffdb3` (fg) | No special color — foreground |
+| `#include`, `#pragma` | `#9E00DE` (magenta) | Matches vim92 PreProc |
+| Bash string variables (`$VAR`) | `#B04AD9` (br_magenta) | Match the `$` sigil color |
+| All syntax groups | bold | Personal preference; inlay hints excluded |
 
 ---
 
@@ -134,7 +134,7 @@ To add a new Neovim highlight group: edit `highlights.lua`.
 
 ## Source Colors (Alacritty)
 
-From `~/.config/alacritty/alacritty.toml`:
+From [`alacritty.toml`](alacritty.toml) (included in this repo):
 
 ### Primary
 

@@ -1,0 +1,53 @@
+[window]
+opacity = 1.0
+#background_opacity = 0.5
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#5B5252"
+blue = "#525EFF"
+cyan = "#4DEEC7"
+green = "#2CFF2C"
+magenta = "#B04AD9"
+red = "#E91537"
+white = "#ffffff"
+yellow = "#FF8538"
+
+[colors.normal]
+black = "#666666"
+blue = "#5087C8"
+cyan = "#008A8B"
+green = "#3CC85E"
+magenta = "#9E00DE"
+red = "#E0546A"
+white = "#eaeaea"
+yellow = "#FCBF35"
+
+[colors.primary]
+background = "#333333"
+bright_foreground = "#ffffff"
+foreground = "#fffdb3"
+
+[env]
+history = "200000"
+
+[font]
+size = 20.0
+normal = { family = "DejaVuSansM Nerd Font Mono", style = "Regular" }
+bold.style = "Bold"
+bold_italic.style = "Bold Italic"
+italic.style = "Italic"
+
+[terminal.shell]
+args = ["--login"]
+program = "/bin/bash"
+
+[keyboard]
+bindings = [
+   #{ key = "PageUp", mods = "Control|Shift", action = "ScrollPageUp" }
+   { key = "PageUp"  , mods = "Shift", action = "ScrollPageUp" },
+   { key = "PageDown", mods = "Shift", action = "ScrollPageDown" },
+   { key = "Return",   mods = "Shift", chars = "\u001b\r" },
+]
