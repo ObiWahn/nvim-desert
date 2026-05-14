@@ -58,7 +58,7 @@ M.roles = {
     special         = c.br_magenta,   -- Vim Special   = Magenta (ANSI 5)
     delimiter       = c.fg,            -- () {} [] , ; in normal foreground
     bracket         = c.fg,            -- brackets in normal foreground
-    variable        = c.fg,
+    variable        = c.white,         -- variables same as parameters
     variable_builtin = c.yellow,       -- this, self
     field           = c.cyan,
     parameter       = c.white,
