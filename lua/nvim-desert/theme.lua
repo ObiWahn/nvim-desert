@@ -25,7 +25,7 @@ M.roles = {
     cursor_line     = c.cursor_line,
     selection       = c.selection,
     non_text        = c.br_black,
-    line_nr         = c.yellow,       -- Vim LineNr = DarkYellow (ANSI 3)
+    line_nr         = c.yellow,        -- Vim LineNr = DarkYellow (ANSI 3)
     cursor_line_nr  = c.yellow,
     match_paren     = c.br_yellow,
     fold            = c.br_black,
@@ -33,30 +33,30 @@ M.roles = {
     -- Syntax
     comment         = c.blue,          -- Vim Comment   = DarkBlue (ANSI 4)
     doc_comment     = c.blue,          -- SpecialComment → Comment
-    constant        = c.br_magenta,   -- Vim Constant  = Magenta (ANSI 13)
-    string          = c.br_magenta,   -- String → Constant
-    string_escape   = c.br_red,       -- SpecialChar → Special  (ANSI 9)
-    character       = c.br_magenta,   -- Character → Constant
-    number          = c.br_magenta,   -- Number → Constant
-    boolean         = c.br_magenta,   -- Boolean → Constant
+    constant        = c.red,            -- Vim Constant  = Red (ANSI 1)
+    string          = c.red,            -- String → Constant
+    string_escape   = c.br_magenta,   -- SpecialChar → Special
+    character       = c.red,            -- Character → Constant
+    number          = c.red,            -- Number → Constant
+    boolean         = c.red,            -- Boolean → Constant
     ["function"]    = c.br_cyan,      -- Function → Identifier = Cyan bold (ANSI 14)
     func_builtin    = c.br_cyan,
     method          = c.br_cyan,      -- also Identifier
-    keyword         = c.br_yellow,    -- Vim Statement = Yellow (ANSI 11)
-    keyword_return  = c.br_yellow,    -- Exception → Statement
-    operator        = c.br_yellow,    -- Operator → Statement
-    type            = c.br_green,     -- Vim Type      = LightGreen (ANSI 10)
-    type_builtin    = c.br_green,     -- Type
+    keyword         = c.yellow,        -- Vim Statement = Yellow (ANSI 3)
+    keyword_return  = c.yellow,        -- Exception → Statement
+    operator        = c.yellow,        -- Operator → Statement
+    type            = c.green,         -- Vim Type      = Green (ANSI 2)
+    type_builtin    = c.green,         -- Type
     storage         = c.br_green,     -- StorageClass → Type
-    structure       = c.br_green,     -- Structure → Type
+    structure       = c.green,         -- Structure → Type (ANSI 2)
     macro           = c.br_blue,      -- Vim PreProc   = LightBlue (ANSI 12)
     preproc         = c.br_blue,
     include         = c.br_blue,
-    label           = c.br_yellow,    -- Label → Statement
-    special         = c.br_red,       -- Vim Special   = LightRed (ANSI 9)
-    delimiter       = c.br_red,       -- Delimiter → Special
+    label           = c.yellow,        -- Label → Statement
+    special         = c.br_magenta,   -- Vim Special   = Magenta (ANSI 5)
+    delimiter       = c.br_magenta,   -- Delimiter → Special
     variable        = c.fg,
-    variable_builtin = c.br_red,      -- Special
+    variable_builtin = c.br_magenta,  -- Special
     field           = c.cyan,
     parameter       = c.white,
     namespace       = c.br_cyan,
