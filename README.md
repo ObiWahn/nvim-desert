@@ -10,7 +10,7 @@ in Alacritty with the desert terminal palette. The goal is: open the same file i
 
 **lazy.nvim:**
 ```lua
-{ "jan-christoph-uhde/nvim-desert" }
+{ "ObiWahn/nvim-desert" }
 ```
 
 **Activate:**
