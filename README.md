@@ -4,6 +4,9 @@ A Neovim colorscheme that reproduces the look of Vim's **default colorscheme** a
 in Alacritty with the desert terminal palette. The goal is: open the same file in Vim
 (terminal, no GUI) and in Neovim with this scheme, and see the same colors.
 
+Since all highlight values use hex colors, the scheme works identically in GUI frontends
+(Neovide, nvim-qt, etc.) — no separate GUI configuration needed.
+
 ---
 
 ## Installation & Usage
@@ -30,7 +33,7 @@ The user runs Vim in the terminal with:
 if has("gui_running")
     colorscheme desert      " GUI only
 else
-    colorscheme default     " terminal — this is what matters
+    colorscheme default     " terminal (the palette this scheme is based on)
 endif
 ```
 
@@ -44,23 +47,23 @@ Vim's named cterm colors map to standard ANSI terminal indices as follows.
 These are the indices Alacritty looks up in its `[colors.normal]` / `[colors.bright]`
 tables to produce the actual rendered hex color.
 
-| Vim cterm name | ANSI index | Palette slot |
-|----------------|-----------|--------------|
-| Black          | 0         | normal black |
-| DarkRed        | 1         | normal red   |
-| DarkGreen      | 2         | normal green |
-| DarkYellow / Brown | 3    | normal yellow |
-| DarkBlue       | 4         | normal blue  |
-| DarkMagenta    | 5         | normal magenta |
-| DarkCyan       | 6         | normal cyan  |
-| Gray / LightGray | 7       | normal white |
-| DarkGray       | 8         | bright black |
-| Red / LightRed | 9         | bright red   |
-| Green / LightGreen | 10    | bright green |
+| Vim cterm name         | ANSI index | Palette slot   |
+|------------------------|------------|----------------|
+| Black                  | 0          | normal black   |
+| DarkRed                | 1          | normal red     |
+| DarkGreen              | 2          | normal green   |
+| DarkYellow / Brown     | 3          | normal yellow  |
+| DarkBlue               | 4          | normal blue    |
+| DarkMagenta            | 5          | normal magenta |
+| DarkCyan               | 6          | normal cyan    |
+| Gray / LightGray       | 7          | normal white   |
+| DarkGray               | 8          | bright black   |
+| Red / LightRed         | 9          | bright red     |
+| Green / LightGreen     | 10         | bright green   |
 | Yellow / LightYellow / Cyan / LightCyan | 11 / 14 | bright yellow / bright cyan |
-| Blue / LightBlue | 12      | bright blue  |
-| Magenta / LightMagenta | 13 | bright magenta |
-| White          | 15        | bright white |
+| Blue / LightBlue       | 12         | bright blue    |
+| Magenta / LightMagenta | 13         | bright magenta |
+| White                  | 15         | bright white   |
 
 > **Important:** Vim's internal NR-16 numbering in `:help cterm-colors` is NOT the ANSI
 > index. The table above reflects the actual escape codes Vim sends to the terminal.
@@ -69,15 +72,15 @@ tables to produce the actual rendered hex color.
 
 From `/usr/share/vim/vim92/syntax/syncolor.vim` (`&background == "dark"`):
 
-| Vim group | cterm color | ANSI# | Resolved hex (Alacritty) |
-|-----------|------------|-------|--------------------------|
-| Comment   | DarkBlue   | 4     | `#5087C8`                |
-| Constant  | Red        | 1     | `#E0546A`                |
-| Statement / Keyword | Yellow | 3 | `#FCBF35`             |
-| PreProc / Include | Magenta | 5  | `#9E00DE`               |
-| Type      | Green      | 2     | `#3CC85E`                |
-| Special   | Magenta    | 5     | `#9E00DE`                |
-| LineNr    | DarkYellow | 3     | `#FCBF35`                |
+| Vim group           | cterm color | ANSI# | Resolved hex (Alacritty) |
+|---------------------|-------------|-------|--------------------------|
+| Comment             | DarkBlue    | 4     | `#5087C8`                |
+| Constant            | Red         | 1     | `#E0546A`                |
+| Statement / Keyword | Yellow      | 3     | `#FCBF35`                |
+| PreProc / Include   | Magenta     | 5     | `#9E00DE`                |
+| Type                | Green       | 2     | `#3CC85E`                |
+| Special             | Magenta     | 5     | `#9E00DE`                |
+| LineNr              | DarkYellow  | 3     | `#FCBF35`                |
 
 ### draw_bold_text_with_bright_colors
 
@@ -92,19 +95,19 @@ affect terminal syntax colors — it only matters for UI elements that explicitl
 The colorscheme deviates from vim92 defaults to improve readability and differentiate
 C++ symbol types:
 
-| Role | Hex | Rationale |
-|------|-----|-----------|
-| Free functions | `#4DEEC7` (br_cyan) | Stand out from regular identifiers |
-| Methods | `#008A8B` (cyan) | Distinct from free functions, matches member vars |
-| Member variables / fields | `#008A8B` (cyan) | Visual tie to methods |
-| Operators (`<<`, `&`, `=`) | `#FF8538` (br_yellow) | Distinct from keywords |
-| Keyword modifiers (`const`, `static`, `public`) | `#3CC85E` (green) | Same family as types |
-| Builtin types (`int`, `bool`) | `#3CC85E` (green) | Distinct from user-defined types |
-| User-defined types / classes | `#fffdb3` (fg) | No special color — foreground |
-| Variables / parameters | `#fffdb3` (fg) | No special color — foreground |
-| `#include`, `#pragma` | `#9E00DE` (magenta) | Matches vim92 PreProc |
-| Bash string variables (`$VAR`) | `#B04AD9` (br_magenta) | Match the `$` sigil color |
-| All syntax groups | bold | Personal preference; inlay hints excluded |
+| Role                           | Hex                    | Rationale                                         |
+|--------------------------------|------------------------|---------------------------------------------------|
+| Free functions                 | `#4DEEC7` (br_cyan)    | Stand out from regular identifiers                |
+| Methods                        | `#008A8B` (cyan)       | Distinct from free functions, matches member vars |
+| Member variables / fields      | `#008A8B` (cyan)       | Visual tie to methods                             |
+| Operators (`<<`, `&`, `=`)     | `#FF8538` (br_yellow)  | Distinct from keywords                            |
+| Keyword modifiers (`const`, `static`, `public`) | `#3CC85E` (green) | Same family as types                  |
+| Builtin types (`int`, `bool`)  | `#3CC85E` (green)      | Distinct from user-defined types                  |
+| User-defined types / classes   | `#fffdb3` (fg)         | No special color — foreground                     |
+| Variables / parameters         | `#fffdb3` (fg)         | No special color — foreground                     |
+| `#include`, `#pragma`          | `#9E00DE` (magenta)    | Matches vim92 PreProc                             |
+| Bash string variables (`$VAR`) | `#B04AD9` (br_magenta) | Match the `$` sigil color                         |
+| All syntax groups              | bold                   | Personal preference; inlay hints excluded         |
 
 ---
 
