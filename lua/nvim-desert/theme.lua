@@ -41,13 +41,13 @@ M.roles = {
     boolean         = c.red,            -- Boolean → Constant
     ["function"]    = c.br_cyan,      -- Function → Identifier = Cyan bold (ANSI 14)
     func_builtin    = c.br_cyan,
-    method          = c.br_cyan,      -- also Identifier
+    method          = c.cyan,          -- member functions match member variables
     keyword         = c.yellow,        -- Vim Statement = Yellow (ANSI 3)
     keyword_modifier = c.green,        -- modifiers: const, static, override, public…
     keyword_operator = c.yellow,       -- operator keywords: new, delete
     keyword_return  = c.yellow,        -- Exception → Statement
     operator        = c.br_yellow,    -- operators: <<, &, =, …
-    type            = c.blue,           -- classes/types = blue (ANSI 4)
+    type            = c.fg,             -- classes/types = normal foreground
     type_builtin    = c.green,          -- builtin types (int, float, bool…)
     storage         = c.green,         -- StorageClass → Type (ANSI 2)
     structure       = c.green,         -- Structure → Type (ANSI 2)
@@ -58,7 +58,7 @@ M.roles = {
     special         = c.br_magenta,   -- Vim Special   = Magenta (ANSI 5)
     delimiter       = c.fg,            -- () {} [] , ; in normal foreground
     bracket         = c.fg,            -- brackets in normal foreground
-    variable        = c.white,         -- variables same as parameters
+    variable        = c.fg,             -- normal variables = normal foreground
     variable_builtin = c.yellow,       -- this, self
     field           = c.cyan,
     parameter       = c.white,
