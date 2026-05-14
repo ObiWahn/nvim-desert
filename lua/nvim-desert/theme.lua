@@ -43,20 +43,23 @@ M.roles = {
     func_builtin    = c.br_cyan,
     method          = c.br_cyan,      -- also Identifier
     keyword         = c.yellow,        -- Vim Statement = Yellow (ANSI 3)
+    keyword_modifier = c.green,        -- modifiers: const, static, override, public…
+    keyword_operator = c.yellow,       -- operator keywords: new, delete
     keyword_return  = c.yellow,        -- Exception → Statement
-    operator        = c.yellow,        -- Operator → Statement
-    type            = c.green,         -- Vim Type      = Green (ANSI 2)
-    type_builtin    = c.green,         -- Type
-    storage         = c.br_green,     -- StorageClass → Type
+    operator        = c.br_yellow,    -- operators: <<, &, =, …
+    type            = c.blue,           -- classes/types = blue (ANSI 4)
+    type_builtin    = c.green,          -- builtin types (int, float, bool…)
+    storage         = c.green,         -- StorageClass → Type (ANSI 2)
     structure       = c.green,         -- Structure → Type (ANSI 2)
-    macro           = c.br_blue,      -- Vim PreProc   = LightBlue (ANSI 12)
-    preproc         = c.br_blue,
-    include         = c.br_blue,
+    macro           = c.magenta,       -- PreProc = Magenta (ANSI 5)
+    preproc         = c.magenta,
+    include         = c.magenta,
     label           = c.yellow,        -- Label → Statement
     special         = c.br_magenta,   -- Vim Special   = Magenta (ANSI 5)
-    delimiter       = c.br_magenta,   -- Delimiter → Special
+    delimiter       = c.fg,            -- () {} [] , ; in normal foreground
+    bracket         = c.fg,            -- brackets in normal foreground
     variable        = c.fg,
-    variable_builtin = c.br_magenta,  -- Special
+    variable_builtin = c.yellow,       -- this, self
     field           = c.cyan,
     parameter       = c.white,
     namespace       = c.br_cyan,
