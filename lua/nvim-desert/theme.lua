@@ -31,8 +31,8 @@ M.roles = {
     fold            = c.br_black,
 
     -- Syntax
-    comment         = c.br_cyan,      -- Vim Comment   = Cyan   (ANSI 14)
-    doc_comment     = c.br_cyan,      -- SpecialComment → Comment
+    comment         = c.blue,          -- Vim Comment   = DarkBlue (ANSI 4)
+    doc_comment     = c.blue,          -- SpecialComment → Comment
     constant        = c.br_magenta,   -- Vim Constant  = Magenta (ANSI 13)
     string          = c.br_magenta,   -- String → Constant
     string_escape   = c.br_red,       -- SpecialChar → Special  (ANSI 9)

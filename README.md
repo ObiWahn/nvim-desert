@@ -67,11 +67,11 @@ tables to produce the actual rendered hex color.
 
 ### Vim default dark-background syntax assignments
 
-From `/usr/share/vim/vim91/syntax/syncolor.vim` (`&background == "dark"`):
+From `/usr/share/vim/vim92/syntax/syncolor.vim` (`&background == "dark"`):
 
 | Vim group | cterm color | ANSI# | Resolved hex (Alacritty) | palette.lua key |
 |-----------|------------|-------|--------------------------|-----------------|
-| Comment   | Cyan       | 14    | `#4DEEC7`                | `br_cyan`       |
+| Comment   | DarkBlue   | 4     | `#5087C8`                | `blue`          |
 | Constant  | Magenta    | 13    | `#B04AD9`                | `br_magenta`    |
 | String → Constant | Magenta | 13 | `#B04AD9`             | `br_magenta`    |
 | Number → Constant | Magenta | 13 | `#B04AD9`             | `br_magenta`    |
