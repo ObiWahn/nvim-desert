@@ -1,1 +1,0 @@
-require("vim-desert").setup()

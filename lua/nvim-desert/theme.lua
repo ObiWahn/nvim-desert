@@ -8,7 +8,7 @@
 -- resolved to hex via the Alacritty palette (see README). Alacritty is configured with
 -- draw_bold_text_with_bright_colors=true, so bold text on normal colors renders bright.
 
-local palette = require("vim-desert.palette")
+local palette = require("nvim-desert.palette")
 local c = palette.colors
 
 local M = {}

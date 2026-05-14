@@ -6,6 +6,20 @@ in Alacritty with the desert terminal palette. The goal is: open the same file i
 
 ---
 
+## Installation & Usage
+
+**lazy.nvim:**
+```lua
+{ "jan-christoph-uhde/nvim-desert" }
+```
+
+**Activate:**
+```lua
+vim.cmd.colorscheme("nvim-desert")
+```
+
+---
+
 ## How the mapping was derived
 
 ### Starting point: Vim usage
